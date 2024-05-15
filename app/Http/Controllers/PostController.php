@@ -10,7 +10,7 @@ class PostController extends Controller
     public function index(){
         $allPosts=[
             ['id'=>'1','title'=>'news','PostedBy'=>'Ahmed','Created_at'=>'12/12/2020'],
-            ['id'=>'1','title'=>'news','PostedBy'=>'Ahmed','Created_at'=>'12/12/2020'],
+            ['id'=>'2','title'=>'news','PostedBy'=>'Ahmed','Created_at'=>'12/12/2020'],
 
             ['id'=>'1','title'=>'news','PostedBy'=>'Ahmed','Created_at'=>'12/12/2020'],
 
@@ -21,5 +21,13 @@ class PostController extends Controller
 
         ];
         return view("posts.index",['posts'=>$allPosts]);
+    }
+
+    public function show(){
+        return view("posts.show");
+    }
+
+    public function create(){
+            return view("posts.create");
     }
 }
