@@ -40,9 +40,21 @@ class PostController extends Controller
             [
                 "title"=> ["required",'min:3'],
                 "description"=>["required",'min:10'],
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1000',
                 "post_creator"=>["required","exists:users,id"],
             ]
             );
+            $filename=null;
+            $path=null;
+            if(request()->has('image')){
+                $file=request()->file('image');
+                $extension = $file->getClientOriginalExtension();
+
+            $filename = time().'.'.$extension;
+
+                $path=('uploads\posts');
+                $file->move($path,$filename);
+            }
         //get user data
         $data=request()->all();
         $title=request()->title;
@@ -54,7 +66,7 @@ class PostController extends Controller
         //  $post->title=$title;
         //  $post->description=$description;
           //$post->postCreator  
-          Post::create(["title"=>$title,"description"=>$description,"user_id"=> $postCreator]);
+          Post::create(["title"=>$title,"description"=>$description,'image'=>$path.$filename,"user_id"=> $postCreator]);
           //$post->save()
         //redirection to post page
       return to_route('posts.index');

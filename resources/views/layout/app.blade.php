@@ -17,8 +17,12 @@
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{route('posts.index')}}">All posts</a>
+          
         </li>
       </ul>
+     
+ 
+
 </nav>
 <div class=" container mt-5">
   @yield('content')

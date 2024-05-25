@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 
 @section('content')
@@ -12,7 +12,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{route('posts.store')}}">
+    <form method="POST" action="{{route('posts.store')}}" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label class="form-label">Title</label>
@@ -20,7 +20,7 @@
         </div>
         <div class="mb-3">
             <label  class="form-label">Description</label>
-            <textarea name="description" class="form-control"  rows="3" >value="{{old('description')}}</textarea>
+            <textarea name="description" class="form-control"  rows="3" value="{{old('description')}}" ></textarea>
         </div>
 
         <div class="mb-3">
@@ -31,6 +31,10 @@
                @endforeach
             </select>
         </div>
+        <div class="mb-3">
+                            <label>Upload File/Image</label>
+                            <input type="file" name="image" class="form-control" />
+                        </div>
 
         <button class="btn btn-success">Submit</button>
     </form>
